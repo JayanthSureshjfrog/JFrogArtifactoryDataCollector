@@ -1,5 +1,5 @@
 # Run JFrogArtifactoryDataCollector in a interactive way
-
+*Command*
 ``` ./JFrogArtifactoryDataCollector.sh ```
 
 Provide inputs to the script as show below:
