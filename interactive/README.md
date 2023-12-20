@@ -1,5 +1,5 @@
-# How to run JFrogArtifactoryDataCollector
-**Interactive way of running the script**
+# Run JFrogArtifactoryDataCollector in a interactive way
+
 ``` ./JFrogArtifactoryDataCollector.sh ```
 
 Provide inputs to the script as show below:
