@@ -1,6 +1,6 @@
 # Run JFrogArtifactoryDataCollector in a non-interactive way
 
-Please place both JFrogArtifactoryDataCollector.sh and JFrogArtifactoryDataCollector.properties file in the same location and add the required parameters in the properties file 
+Place both JFrogArtifactoryDataCollector.sh and JFrogArtifactoryDataCollector.properties file in the same location and add the required parameters in the properties file 
 and run the script.
 
 *Command*
