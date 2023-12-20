@@ -8,7 +8,7 @@ Provide inputs to the script as show below:
 ./JFrogArtifactoryDataCollector.sh
 ###########################This script will not consider any default values, so please pass the values explicitly ###########################
 PID file created...
-Please enter the Artifactory Home path (The path till var and app folder, Ex: /opt/jfrog/artifactory):/opt/jfrog/artifactory
+Please enter the Artifactory Home path (The path till var and app folder, Ex: /opt/jfrog/artifactory): /opt/jfrog/artifactory
 Please enter the target path to save the files (Ex: /tmp):/tmp
 Please enter the DB port (Ex: 5432 for postgres or leave blank for derby DB):
 Please enter the ticket number to upload the collected data to supportlogs.jfrog.com (leave blank to ignore the upload):1100
