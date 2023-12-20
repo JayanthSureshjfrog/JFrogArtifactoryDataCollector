@@ -18,69 +18,6 @@ How many thread dumps would you like to take - (5 or 10): 10
 Please specify the time interval between each thread dump - (5 or 10) in seconds: 10
 ```
 
-**Run with command line arguments**
-
-```./JFrogArtifactoryDataCollector.sh <<< $'<ARTIFACTORY_HOME_PATH>\n<FILE_PATH>\n<DB_PORT>\n<TICKET_NUMBER>\n<HEAP_DUMP_FLAG>\n<TD_COUNT>\n<TD_TIME_INTERVAL>\n' ```
-
-**Example:**
-``` ./JFrogArtifactoryDataCollector.sh <<< $'/opt/jfrog/artifactory\n/tmp\n0\n0\nn\n2\n2\n' ```
-
-
-|         Parameter         |           Description             | 
-|---------------------------|-----------------------------------|
-| `ARTIFACTORY_HOME_PATH`        | Artifactory home path (EX:/opt/jfrog/artifactiry ) |
-| `FILE_PATH`               | Folder path to store the extracted data (EX: /tmp) |
-| `DB_PORT`     | DB port number used to connect to Artifactory DB server, can pass 0 for derby DB |
-| `TICKET_NUMBER`     | Ticket number to upload the extracted data       |
-| `HEAP_DUMP_FLAG`             | Flag to collect Heap Dump, vaules are y/n (yes/no) |
-| `DISK_DETAILS_FLAG`             | Flag to collect Disk details, vaules are y/n (yes/no) |
-| `TD_COUNT`         | Number of Thread dumps to be collected |
-| `TD_TIME_INTERVAL`         | Time interval between Thread dumps |
-
-**Run with configuration file**
-
-``` <folder-name>/JFrogArtifactoryDataCollector.sh < <folder-name>/arguments.conf >> <folder-name>/output-$(date +\%F-\%R).log & ```
-
-Using the above command we can configure the script in crontab to run the script on the required time.
-
-**Example:** ``` */30 * * * * nohup <folder-name>/JFrogArtifactoryDataCollector.sh < <folder-name>/arguments.conf >> <folder-name>/output-$(date +\%F-\%R).log 2>&1 ```
-
-Content of **arguments.conf** file
-
-```
-ARTIFACTORY_HOME_PATH 
-FILE_PATH
-DB_PORT
-TICKET_NUMBER
-HEAP_DUMP_FLAG
-DISK_DETAILS_FLAG
-TD_COUNT
-TD_TIME_INTERVAL
-```
-**Example-1:** In this example, we are running the script where the Artifactory DB is default derby and do not want to uplaod the data to JFrog Support logs portal.so that the extarcted data will be in the FILE_PATH.
-```
-/opt/jfrog/artifactory 
-/tmp
-0
-0
-n
-n
-5
-10
-```
-
-**Example-2:** In this example, we are running the script where the Artifactory DB is postgres and the ticket number is 123456. So that once the script is successfully completed then we are uploading the extracted data to JFrog Support logs portal, even a copy of the extracted data will be in FILE_PATH.
-```
-/opt/jfrog/artifactory 
-/tmp
-5432
-123456
-y
-y
-5
-10
-```
-
 Similar to Artifactory, Below are the lists of supported/tested operating systems and the versions.
 
 |      Product       |       Debian      |      Centos*       |        RHEL        |      Ubuntu        |    Amazon Linux    |
