@@ -4,7 +4,7 @@ Place both JFrogArtifactoryDataCollector.sh and JFrogArtifactoryDataCollector.pr
 and run the script.
 
 *Command*
-``` ./JFrogArtifactoryDataCollector.sh ```
+```  <FILE-PATH>/JFrogArtifactoryDataCollector.sh >> <FILE-PATH>/JFrogArtifactoryDataCollector/output-$(date +%F-%R).log & ```
 
 Below are the sample paramters to the script:
 
