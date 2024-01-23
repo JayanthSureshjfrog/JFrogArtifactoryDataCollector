@@ -23,7 +23,6 @@ create_folder()
 	then
         rm -rf  $FILE_PATH/Artifactory_details
 	mkdir $FILE_PATH/Artifactory_details && chmod 777 $FILE_PATH/Artifactory_details
-	#cp $FILE_PATH/Artifactory_details.tar.gz $FILE_PATH/Artifactory_details-BackupCreatedAt-$TIMESTAMP.tar.gz
 	else
 	## RHEL 8.x OS need full permission on the folder to create hdump.hprof file
         mkdir $FILE_PATH/Artifactory_details && chmod 777 $FILE_PATH/Artifactory_details
@@ -49,16 +48,6 @@ mem-cpu_utilization()
 {
 	printf "==================== Memory and CPU Percentage per process ===================\n" > $FILE_PATH/Artifactory_details/mem-cpu_utilization.txt
 	ps -eo pid,ppid,user,%mem,%cpu,start,time,args --sort=-%mem | head >> $FILE_PATH/Artifactory_details/mem-cpu_utilization.txt
-	#ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10 >> $FILE_PATH/Artifactory_details/procress_cpu_utilization.txt
-	#ps -eo pcpu,pid,user,args --sort -pid &>> $FILE_PATH/Artifactory_details/procress_cpu_utilization.txt
-	#echo "====================Memory Percentage per process ===================" >> $FILE_PATH/Artifactory_details/procress_memory_utilization.txt
-	#echo "Process          %MEM" &>> $FILE_PATH/Artifactory_details/procress_memory_utilization.txt
-	#ps -eocomm,pmem | egrep -v '(0.0)|(%MEM)'| sort -nrk 2 | head >> $FILE_PATH/Artifactory_details/procress_memory_utilization.txt
-	#ps -eo pmem,comm,pid,rss,vsz --sort -rss &>> $FILE_PATH/Artifactory_details/procress_memory_utilization.txt
-	#echo "====================List of procress consuming cpu===================" >> $FILE_PATH/Artifactory_details/procress_cpu_utilization.txt
-	#echo "Process          %CPU" >> $FILE_PATH/Artifactory_details/procress_cpu_utilization.txt
-	#ps -eocomm,pcpu | egrep -v '(0.0)|(%CPU)' | sort -nrk 2 | head >> $FILE_PATH/Artifactory_details/procress_cpu_utilization.txt
-
 }
 
 Server_details()
@@ -169,14 +158,6 @@ Connection_Details()
 	printf "\n Total JFrog-Integration connections is `netstat -ntlpea | grep $(pidof jf-integration) | wc -l`" >> $FILE_PATH/Artifactory_details/Connections_Info.txt
    	printf "\n======================================================= \n" >> $FILE_PATH/Artifactory_details/Connections_Info.txt
     
-	# printf "==================HTTP connections on 8081 port=================\n" >> $FILE_PATH/Artifactory_details/Threads_Info.txt
-	# for ((count=1; count <= 10; count++));
-	# do printf " \n $(date)  HTTP Connections : $(netstat -latuen | grep 8081 | wc -l) \n "  >> $FILE_PATH/Artifactory_details/Threads_Info.txt
-	# done;
-	# printf "\n==================HTTP connections on 8040 port=================\n" >> $FILE_PATH/Artifactory_details/Threads_Info.txt
-	# for ((count=1; count <= 10; count++));
-	# do printf " \n $(date)  HTTP Connections : $(netstat -latuen | grep 8040 | wc -l) \n "  >> $FILE_PATH/Artifactory_details/Threads_Info.txt
-	# done;
 }
 
 Database_Connections()
@@ -221,8 +202,6 @@ HealthCheck()
 upload_data()
 {
 	
-	#cp $FILE_PATH/Artifactory_details.tar.gz $FILE_PATH/Artifactory_details-$(date +%Y%m%d%H%M%S).tar.gz
-	#else
 	curl -i -T $FILE_PATH/Artifactory_details-$TIMESTAMP.tar.gz "https://supportlogs.jfrog.com/logs/$TICKET_NUMBER/" &>> $FILE_PATH/Artifactory_details/upload_data.log;
 	sleep 30s;
 	#fi
