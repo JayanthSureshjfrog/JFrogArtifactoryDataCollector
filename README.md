@@ -24,3 +24,4 @@ During the course of collecting the required details, we end up communicating it
 8. Connection to the server Details.
 9. List of open port details.
 10. Artifactory Readiness and Health check of each microservice.
+11. Environment Variables.
