@@ -218,6 +218,13 @@ Check_Before_Run()
     fi
 }
 
+Environment_Variables()
+{
+        printf "==================Environment Variables=================\n" >> $FILE_PATH/Artifactory_details/Environment_Variables.txt
+	cat "/proc/$(pidof java)/environ" | tr '\0' '\n' >> $FILE_PATH/Artifactory_details/Environment_Variables.txt
+}
+
+
 ###################################
 # Main body of script starts here #
 ###################################
@@ -308,6 +315,9 @@ echo -e "\e[1;32mCompleted Gathering HealthCheck of the Artifactory\e[0m";
 echo -e "\e[1;33mStarted Gathering Open Ports in the Artifactory server\e[0m";
 Listen_Ports
 echo -e "\e[1;32mCompleted Gathering Open Ports in the Artifactory server\e[0m";
+echo -e "\e[1;33mStarted collecting the Environment Variables...\e[0m" ;
+Environment_Variables
+echo -e "\e[1;32mCompleted collecting the Environment Variables...\e[0m";
 echo -e "\e[1;33mStarted archiving all the files...\e[0m" ;
 archive_files
 echo -e "\e[1;32mCompleted archiving all the files...\e[0m";
