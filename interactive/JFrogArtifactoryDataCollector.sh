@@ -34,7 +34,7 @@ create_folder()
 collect_thread_dump()
 {
 	for ((count=1; count <= $TD_COUNT; count++));
-	do $ARTIFACTORY_HOME_PATH/app/third-party/java/bin/jstack -l $(pidof java)  &> "$FILE_PATH/Artifactory_details/artifactory.$(date +%Y%m%d%H%M%S).td"
+	do $ARTIFACTORY_HOME_PATH/app/third-party/java/bin/jcmd $(pidof java) Thread.print &> "$FILE_PATH/Artifactory_details/artifactory.$(date +%Y%m%d%H%M%S).td"
 	echo "Created" $count "ThreadDump";
 	sleep "$TD_TIME_INTERVAL"s; 
 	done;
